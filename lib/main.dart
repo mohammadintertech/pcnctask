@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pcnc_task/constants/app_colors.dart';
-import 'package:pcnc_task/screens/auth/sign_in_screen.dart';
-import 'package:pcnc_task/screens/auth/sign_up_screen.dart';
+import 'package:pcnc_task/features/auth/screens/sign_in_screen.dart';
+import 'package:pcnc_task/features/auth/screens/sign_up_screen.dart';
+import 'package:pcnc_task/global/constants/app_colors.dart';
 
 void main() {
   runApp(const MyApp());

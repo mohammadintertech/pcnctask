@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pcnc_task/constants/text_styles.dart';
-import 'package:pcnc_task/widgets/primary_button.dart';
-import 'package:pcnc_task/widgets/rounded_text_field.dart';
+import 'package:pcnc_task/features/auth/widgets/rounded_text_field.dart';
+import 'package:pcnc_task/global/constants/text_styles.dart';
+import 'package:pcnc_task/global/widgets/primary_button.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -21,7 +21,7 @@ class _SignInScreenState extends State<SignInScreen> {
             padding: const EdgeInsets.only(top: 30.0),
             child: Text(
               'Welcome\nBack!',
-              style: TextStyles.header,
+              style: AppTextStyles.header,
             ),
           ),
           Padding(
@@ -58,7 +58,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 onPressed: () {
                   Navigator.pushNamed(context, '/sign_up');
                 },
-                child: Text('Sign Up'),
+                child: Text('Sign Up', style: AppTextStyles.underLine),
               ),
             ],
           )

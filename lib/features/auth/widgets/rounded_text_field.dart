@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pcnc_task/constants/app_colors.dart';
+import 'package:pcnc_task/global/constants/app_colors.dart';
 
 class RoundedTextField extends StatefulWidget {
   RoundedTextField({this.hint, this.preIcon, this.isPass = false});
   Icon? preIcon;
-  bool isPass;
+  final bool isPass;
   String? hint;
 
   @override
@@ -23,22 +23,23 @@ class _RoundedTextFieldState extends State<RoundedTextField> {
         filled: true,
         prefixIcon: widget.preIcon,
         fillColor: AppColors.textFieldBackground,
-        contentPadding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
-        border: OutlineInputBorder(
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
+        border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(30.0)),
           borderSide: BorderSide.none,
         ),
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(15.0)),
-          borderSide: BorderSide(
-              color: const Color.fromARGB(255, 129, 129, 129)!, width: 1.0),
+          borderSide:
+              BorderSide(color: Color.fromARGB(255, 129, 129, 129), width: 1.0),
         ),
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(15.0)),
           borderSide: BorderSide(color: AppColors.primaryColor, width: 1.0),
         ),
         suffixIcon: !widget.isPass
-            ? SizedBox()
+            ? const SizedBox()
             : IconButton(
                 icon: Icon(
                   !obSecure ? Icons.visibility : Icons.visibility_off,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pcnc_task/constants/app_colors.dart';
-import 'package:pcnc_task/constants/text_styles.dart';
-import 'package:pcnc_task/widgets/primary_button.dart';
-import 'package:pcnc_task/widgets/rounded_text_field.dart';
+import 'package:pcnc_task/features/auth/widgets/rounded_text_field.dart';
+import 'package:pcnc_task/global/constants/app_colors.dart';
+import 'package:pcnc_task/global/constants/text_styles.dart';
+import 'package:pcnc_task/global/widgets/primary_button.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -22,7 +22,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             padding: const EdgeInsets.only(top: 30.0),
             child: Text(
               'Create an\naccount',
-              style: TextStyles.header,
+              style: AppTextStyles.header,
             ),
           ),
           Padding(
@@ -80,10 +80,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Create An Account?'),
+              Text('I Already Have an Account'),
               TextButton(
-                onPressed: () {},
-                child: Text('Sign Up'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  'Login',
+                  style: AppTextStyles.underLine,
+                ),
               ),
             ],
           )

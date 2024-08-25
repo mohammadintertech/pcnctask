@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pcnc_task/constants/app_colors.dart';
+import 'package:pcnc_task/global/constants/app_colors.dart';
 
 class PrimaryButton extends StatefulWidget {
   Function onTap;
