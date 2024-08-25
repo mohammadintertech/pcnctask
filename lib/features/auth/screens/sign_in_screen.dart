@@ -50,7 +50,7 @@ class _SignInScreenState extends State<SignInScreen> {
             padding: const EdgeInsets.only(top: 30.0, bottom: 30),
             child: PrimaryButton(
                 onTap: () {
-                  Navigator.pushNamed(context, '/dashboard');
+                  Navigator.pushReplacementNamed(context, '/nav_screen');
                 },
                 text: "Login"),
           ),

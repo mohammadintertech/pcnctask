@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pcnc_task/features/auth/screens/sign_in_screen.dart';
 import 'package:pcnc_task/features/auth/screens/sign_up_screen.dart';
+import 'package:pcnc_task/features/bottom_nav/screens/nav_screen.dart';
 import 'package:pcnc_task/features/shopping/screens/dashboard_screen.dart';
 import 'package:pcnc_task/global/constants/app_colors.dart';
+import 'package:sizer/sizer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,17 +16,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 690),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      // Use builder only if you need to use library outside ScreenUtilInit context
-      builder: (_, child) {
+    return Sizer(
+      builder: (context, orientation, deviceType) {
         return MaterialApp(
           initialRoute: '/', // Initial route
           routes: {
             '/': (context) => SignInScreen(),
             '/sign_up': (context) => SignUpScreen(),
+            '/sign_in': (context) => SignInScreen(),
+            '/nav_screen': (context) => NavScreen(),
             '/dashboard': (context) => DashBoardScreen(),
           },
           title: 'Flutter Demo',
