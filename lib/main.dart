@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pcnc_task/features/auth/screens/sign_in_screen.dart';
 import 'package:pcnc_task/features/auth/screens/sign_up_screen.dart';
+import 'package:pcnc_task/features/shopping/screens/dashboard_screen.dart';
 import 'package:pcnc_task/global/constants/app_colors.dart';
 
 void main() {
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
           routes: {
             '/': (context) => SignInScreen(),
             '/sign_up': (context) => SignUpScreen(),
+            '/dashboard': (context) => DashBoardScreen(),
           },
           title: 'Flutter Demo',
           theme: ThemeData(

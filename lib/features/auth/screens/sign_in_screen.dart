@@ -48,7 +48,11 @@ class _SignInScreenState extends State<SignInScreen> {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 30.0, bottom: 30),
-            child: PrimaryButton(onTap: () {}, text: "Login"),
+            child: PrimaryButton(
+                onTap: () {
+                  Navigator.pushNamed(context, '/dashboard');
+                },
+                text: "Login"),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
