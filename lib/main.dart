@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
     return Sizer(
       builder: (context, orientation, deviceType) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           initialRoute: '/', // Initial route
           routes: {
             '/': (context) => SignInScreen(),
