@@ -10,6 +10,10 @@ class AppTextStyles {
     decoration: TextDecoration.underline,
     decorationColor: AppColors.primaryColor,
   );
+  static TextStyle section = TextStyle(
+    fontWeight: FontWeight.bold,
+    fontSize: 17.sp,
+  );
   static TextStyle appBarTitle = TextStyle(
     color: AppColors.accentColor,
     fontWeight: FontWeight.bold,

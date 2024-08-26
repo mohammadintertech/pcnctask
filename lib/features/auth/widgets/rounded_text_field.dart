@@ -25,10 +25,10 @@ class _RoundedTextFieldState extends State<RoundedTextField> {
         fillColor: AppColors.textFieldBackground,
         contentPadding:
             const EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
-        border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(30.0)),
-          borderSide: BorderSide.none,
-        ),
+        // border: const OutlineInputBorder(
+        //   borderRadius: BorderRadius.all(Radius.circular(30.0)),
+        //   borderSide: BorderSide.none,
+        // ),
         enabledBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(15.0)),
           borderSide:

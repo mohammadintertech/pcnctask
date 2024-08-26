@@ -24,8 +24,10 @@ class _NavScreenState extends State<NavScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(),
       body: screens[currentIndex],
       bottomNavigationBar: Container(
+        color: Colors.transparent,
         height: 10.h,
         child: Stack(
           children: [
