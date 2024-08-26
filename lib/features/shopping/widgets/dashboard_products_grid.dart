@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pcnc_task/features/shopping/widgets/product_item.dart';
 import 'package:sizer/sizer.dart';
 
 class DashboardGrid extends StatefulWidget {
@@ -14,11 +15,15 @@ class _DashboardGridState extends State<DashboardGrid> {
     0,
     0,
     0,
+    0,
+    0,
+    0,
   ];
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red,
+      margin: EdgeInsets.only(left: 15, right: 8),
+      // color: Colors.red,
       child: SizedBox(
         height: ((products.length + 1) / 2).toInt() * 30.h +
             ((products.length + 1) / 2).toInt() * 8.0,
@@ -32,16 +37,7 @@ class _DashboardGridState extends State<DashboardGrid> {
             mainAxisExtent: 30.h,
           ),
           itemBuilder: (context, index) {
-            return Container(
-              height: 15.h,
-              color: Colors.blue, // color of grid items
-              child: Center(
-                child: Text(
-                  ' items[index]',
-                  style: TextStyle(fontSize: 18.0, color: Colors.white),
-                ),
-              ),
-            );
+            return ProductItem();
           },
         ),
       ),

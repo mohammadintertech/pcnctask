@@ -13,20 +13,25 @@ class WhiteButton extends StatefulWidget {
 class _WhiteButtonState extends State<WhiteButton> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.3),
-          spreadRadius: 5,
-          blurRadius: 10,
-          offset: Offset(0, 3), // changes position of shadow
-        ),
-      ], borderRadius: BorderRadius.circular(10), color: Colors.white),
-      child: Padding(
-        padding: EdgeInsets.only(right: 10, left: 10, top: 3, bottom: 3),
-        child: Text(
-          widget.text,
-          style: TextStyle(fontSize: 11.sp),
+    return GestureDetector(
+      onTap: () {
+        widget.onTap();
+      },
+      child: Container(
+        decoration: BoxDecoration(boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 5,
+            blurRadius: 10,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ], borderRadius: BorderRadius.circular(10), color: Colors.white),
+        child: Padding(
+          padding: EdgeInsets.only(right: 10, left: 10, top: 3, bottom: 3),
+          child: Text(
+            widget.text,
+            style: TextStyle(fontSize: 11.sp),
+          ),
         ),
       ),
     );

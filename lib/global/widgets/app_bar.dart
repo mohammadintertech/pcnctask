@@ -9,12 +9,11 @@ class MyAppBarTitle extends StatefulWidget {
   final bool showDarwerIcon;
   final bool showLogo;
   final String title;
-  MyAppBarTitle({
-    required this.showDarwerIcon,
-    required this.showLogo,
-    required this.showProfileIcon,
-    required this.title,
-  });
+  MyAppBarTitle(
+      {required this.showDarwerIcon,
+      required this.showLogo,
+      required this.showProfileIcon,
+      required this.title});
   @override
   State<MyAppBarTitle> createState() => _MyAppBarState();
 }

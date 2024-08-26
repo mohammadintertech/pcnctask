@@ -25,7 +25,12 @@ class _CatSectionState extends State<CatSection> {
                 "All Categories",
                 style: AppTextStyles.section,
               ),
-              WhiteButton(onTap: () {}, text: "See All"),
+              WhiteButton(
+                  onTap: () {
+                    print('object');
+                    Navigator.pushNamed(context, "/cat");
+                  },
+                  text: "See All"),
             ],
           ),
         ),

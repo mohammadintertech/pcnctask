@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:pcnc_task/features/auth/screens/sign_in_screen.dart';
 import 'package:pcnc_task/features/auth/screens/sign_up_screen.dart';
 import 'package:pcnc_task/features/bottom_nav/screens/nav_screen.dart';
+import 'package:pcnc_task/features/shopping/screens/categories_screen.dart';
 import 'package:pcnc_task/features/shopping/screens/dashboard_screen.dart';
+import 'package:pcnc_task/features/shopping/screens/search_screen.dart';
 import 'package:pcnc_task/global/constants/app_colors.dart';
 import 'package:sizer/sizer.dart';
 
@@ -27,6 +29,8 @@ class MyApp extends StatelessWidget {
             '/sign_in': (context) => SignInScreen(),
             '/nav_screen': (context) => NavScreen(),
             '/dashboard': (context) => DashBoardScreen(),
+            '/cat': (context) => CatScreen(),
+            '/search': (context) => SearchScreen(),
           },
           title: 'Flutter Demo',
           theme: ThemeData(
