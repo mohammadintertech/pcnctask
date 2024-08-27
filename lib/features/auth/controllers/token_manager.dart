@@ -2,13 +2,14 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class TokenManager {
   final _storage = const FlutterSecureStorage();
-
+  static bool isLoggedIn = false;
   static const String _accessTokenKey = 'access_token';
   static const String _refreshTokenKey = 'refresh_token';
 
   // Save access token
   Future<void> saveAccessToken(String token) async {
     await _storage.write(key: _accessTokenKey, value: token);
+    print('saved');
   }
 
   // Save refresh token
@@ -47,5 +48,13 @@ class TokenManager {
     // } else {
     //   // Handle token refresh failure
     // }
+  }
+
+  Future<bool> isUserLoggedIn() async {
+    final token = await _storage.read(key: 'access_token');
+
+    isLoggedIn = token != null;
+    print(isLoggedIn);
+    return isLoggedIn;
   }
 }

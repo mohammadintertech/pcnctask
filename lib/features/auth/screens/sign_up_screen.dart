@@ -31,10 +31,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
       isLoading = true;
 
       bool result =
-          await Provider.of<UserProvider>(context, listen: false).register(
+          await Provider.of<UserProvider>(context, listen: false).signUp(
         emailController.text.trim(),
         passController.text,
-        // usernameController.text,
+        usernameController.text,
       );
       if (result) {
         Navigator.pop(context);
