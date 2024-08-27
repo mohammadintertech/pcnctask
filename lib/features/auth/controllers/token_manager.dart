@@ -18,7 +18,7 @@ class TokenManager {
 
   // Get access token
   Future<String?> getAccessToken() async {
-    return await _storage.read(key: _accessTokenKey);
+    return await _storage.read(key: _accessTokenKey) ?? "";
   }
 
   // Get refresh token

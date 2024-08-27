@@ -4,4 +4,12 @@ class EndPoints {
   static login() {
     return base_url + "/auth/login";
   }
+
+  static profile() {
+    return base_url + "/auth/profile";
+  }
+
+  static signUp() {
+    return base_url + "/users/";
+  }
 }
