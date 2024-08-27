@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pcnc_task/features/auth/controllers/user_provider.dart';
 import 'package:pcnc_task/features/auth/widgets/rounded_text_field.dart';
 import 'package:pcnc_task/global/constants/text_styles.dart';
 import 'package:pcnc_task/global/widgets/primary_button.dart';
+import 'package:provider/provider.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -11,6 +13,16 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
+  login() async {
+    bool result = await Provider.of<UserProvider>(context, listen: false)
+        .login(emailController.text.trim(), passController.text);
+    if (result) {
+      Navigator.pushReplacementNamed(context, '/nav_screen');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +39,7 @@ class _SignInScreenState extends State<SignInScreen> {
           Padding(
             padding: const EdgeInsets.only(top: 30.0),
             child: RoundedTextField(
+              controller: emailController,
               hint: "Username or Email",
               preIcon: Icon(Icons.person_2_sharp),
             ),
@@ -34,6 +47,7 @@ class _SignInScreenState extends State<SignInScreen> {
           Padding(
             padding: const EdgeInsets.only(top: 30.0),
             child: RoundedTextField(
+              controller: passController,
               hint: "Password",
               preIcon: Icon(Icons.lock),
               isPass: true,
@@ -49,8 +63,8 @@ class _SignInScreenState extends State<SignInScreen> {
           Padding(
             padding: const EdgeInsets.only(top: 30.0, bottom: 30),
             child: PrimaryButton(
-                onTap: () {
-                  Navigator.pushReplacementNamed(context, '/nav_screen');
+                onTap: () async {
+                  await login();
                 },
                 text: "Login"),
           ),

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:pcnc_task/global/constants/app_colors.dart';
 
 class RoundedTextField extends StatefulWidget {
-  RoundedTextField({this.hint, this.preIcon, this.isPass = false});
+  RoundedTextField(
+      {this.hint, this.preIcon, this.isPass = false, required this.controller});
   Icon? preIcon;
   final bool isPass;
   String? hint;
+  final TextEditingController controller;
 
   @override
   State<RoundedTextField> createState() => _RoundedTextFieldState();
@@ -17,6 +19,7 @@ class _RoundedTextFieldState extends State<RoundedTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: widget.controller,
       obscureText: widget.isPass ? obSecure : false,
       decoration: InputDecoration(
         hintText: widget.hint ?? "",

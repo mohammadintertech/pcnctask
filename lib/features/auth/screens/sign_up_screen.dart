@@ -12,6 +12,10 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
+  TextEditingController confirmPassController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +32,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           Padding(
             padding: const EdgeInsets.only(top: 30.0),
             child: RoundedTextField(
+              controller: usernameController,
               hint: "Username",
               preIcon: Icon(Icons.person_2_sharp),
             ),
@@ -35,6 +40,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           Padding(
             padding: const EdgeInsets.only(top: 30.0),
             child: RoundedTextField(
+              controller: emailController,
               hint: "Email",
               preIcon: Icon(Icons.email),
             ),
@@ -42,6 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           Padding(
             padding: const EdgeInsets.only(top: 30.0),
             child: RoundedTextField(
+              controller: passController,
               hint: "Password",
               preIcon: Icon(Icons.lock),
               isPass: true,
@@ -50,6 +57,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           Padding(
             padding: const EdgeInsets.only(top: 30.0),
             child: RoundedTextField(
+              controller: confirmPassController,
               hint: "Confirm Password",
               preIcon: Icon(Icons.lock),
               isPass: true,

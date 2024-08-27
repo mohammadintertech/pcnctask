@@ -10,13 +10,18 @@ class PrimaryButton extends StatefulWidget {
 }
 
 class _PrimaryButtonState extends State<PrimaryButton> {
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {
-          widget.onTap();
+        onPressed: () async {
+          isLoading = true;
+          setState(() {});
+          await widget.onTap();
+          isLoading = false;
+          setState(() {});
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.accentColor, // Button background color
@@ -27,10 +32,12 @@ class _PrimaryButtonState extends State<PrimaryButton> {
           padding: EdgeInsets.symmetric(
               horizontal: 24, vertical: 12), // Button padding
         ),
-        child: Text(
-          widget.text,
-          style: TextStyle(color: Colors.white, fontSize: 20),
-        ),
+        child: isLoading
+            ? CircularProgressIndicator()
+            : Text(
+                widget.text,
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
       ),
     );
   }
