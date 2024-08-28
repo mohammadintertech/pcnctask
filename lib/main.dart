@@ -6,6 +6,7 @@ import 'package:pcnc_task/features/auth/screens/profile_screen.dart';
 import 'package:pcnc_task/features/auth/screens/sign_in_screen.dart';
 import 'package:pcnc_task/features/auth/screens/sign_up_screen.dart';
 import 'package:pcnc_task/features/bottom_nav/screens/nav_screen.dart';
+import 'package:pcnc_task/features/shopping/controllers/categories_provider.dart';
 import 'package:pcnc_task/features/shopping/screens/categories_screen.dart';
 import 'package:pcnc_task/features/shopping/screens/dashboard_screen.dart';
 import 'package:pcnc_task/features/shopping/screens/search_screen.dart';
@@ -24,6 +25,7 @@ void main() async {
   // print(accessToken);
 
   initialRoute = accessToken != null ? '/nav_screen' : '/sign_in';
+  print(initialRoute);
   Requester.setupDio();
   runApp(const MyApp());
 }
@@ -47,12 +49,12 @@ class _MyAppState extends State<MyApp> {
         return MultiProvider(
             providers: [
               ChangeNotifierProvider(create: (_) => UserProvider()),
+              ChangeNotifierProvider(create: (_) => CategoryProvider()),
             ],
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
               initialRoute: initialRoute, // Initial route
               routes: {
-                '/': (context) => NavScreen(),
                 '/sign_up': (context) => SignUpScreen(),
                 '/sign_in': (context) => SignInScreen(),
                 '/profile': (context) => ProfileScreen(),

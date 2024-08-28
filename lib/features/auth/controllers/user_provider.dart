@@ -51,7 +51,7 @@ class UserProvider with ChangeNotifier {
 
         Navigator.pushNamedAndRemoveUntil(
           context,
-          '/',
+          '/nav_screen',
           (Route<dynamic> route) => false,
         );
         return;

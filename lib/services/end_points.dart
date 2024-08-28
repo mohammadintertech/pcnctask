@@ -16,4 +16,8 @@ class EndPoints {
   static signUp() {
     return base_url + "/users/";
   }
+
+  static categories() {
+    return base_url + "/categories";
+  }
 }

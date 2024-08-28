@@ -16,30 +16,28 @@ class Requester {
     dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
-          // Attach the access token to every request
           final accessToken = await TokenManager().getAccessToken();
           if (accessToken != null) {
             options.headers['Authorization'] = 'Bearer $accessToken';
             options.headers['Content-Type'] = 'application/json';
             options.headers['Accept'] = '*/*';
           }
-          return handler.next(options); // Continue with the request
+          return handler.next(options);
         },
         onError: (error, handler) async {
           // Check if the error is a 401 Unauthorized
           if (error.response?.statusCode == 401) {
             AppToast.showToast("Unauthorized .. Refresh Token..");
-            // Try refreshing the token
+
             TokenManager tokenManager = TokenManager();
             final refreshToken = await tokenManager.getRefreshToken();
             if (refreshToken != null) {
               try {
                 final refreshResponse = await dio.post(
-                  EndPoints
-                      .refreshToken(), // Replace with your refresh token endpoint
+                  EndPoints.refreshToken(),
                   data: {'refreshToken': refreshToken},
                 );
-                print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+
                 print(refreshResponse);
 
                 if (refreshResponse.statusCode == 201) {
@@ -50,7 +48,6 @@ class Requester {
                   await tokenManager.saveAccessToken(newAccessToken);
                   await tokenManager.saveRefreshToken(newRefreshToken);
 
-                  // Retry the failed request with the new access token
                   final retryOptions = error.requestOptions;
                   retryOptions.headers['Authorization'] =
                       'Bearer $newAccessToken';
@@ -65,26 +62,21 @@ class Requester {
                     queryParameters: retryOptions.queryParameters,
                   );
 
-                  return handler
-                      .resolve(retryResponse); // Return the successful response
+                  return handler.resolve(retryResponse);
                 } else {
                   AppToast.showToast(error);
-                  return handler.reject(error); // Pass the error down
+                  return handler.reject(error);
                 }
               } catch (e) {
-                // Handle any errors that occur during token refresh
                 print(e.toString());
                 AppToast.showToast(e.toString());
-                return; // Pass the error down
+                return;
               }
             } else {
-              // If no refresh token is available, log out the user
-              // Navigate to login screen or show an error message
               AppToast.showToast(error.toString());
               return handler.reject(error);
             }
           } else {
-            // For any other errors, just pass them down
             return handler.next(error);
           }
         },
@@ -98,11 +90,11 @@ class Requester {
     try {
       print(path);
 
-      // final response = await http.get(uri, headers: headers);
       final response = await dio.get(
         path,
       );
 
+      print(response);
       return response;
     } catch (e) {
       print('GET request error: $e');
@@ -119,8 +111,8 @@ class Requester {
       print(data);
 
       final response = await dio.post(
-        path, // Replace with your POST endpoint
-        data: data, // Data to be sent in the body of the POST request
+        path,
+        data: data,
       );
 
       return response;

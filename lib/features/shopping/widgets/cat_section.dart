@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:pcnc_task/features/auth/controllers/user_provider.dart';
+import 'package:pcnc_task/features/shopping/controllers/categories_provider.dart';
 import 'package:pcnc_task/features/shopping/widgets/circle_cat_item.dart';
 import 'package:pcnc_task/features/shopping/widgets/white_button.dart';
 import 'package:pcnc_task/global/constants/text_styles.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CatSection extends StatefulWidget {
   const CatSection({super.key});
@@ -12,6 +16,13 @@ class CatSection extends StatefulWidget {
 }
 
 class _CatSectionState extends State<CatSection> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Provider.of<CategoryProvider>(context, listen: false).getCategories();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -34,16 +45,22 @@ class _CatSectionState extends State<CatSection> {
             ],
           ),
         ),
-        SizedBox(
-          height: 8.h,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return CircleCatItem();
-            },
-            itemCount: 10,
-          ),
-        )
+        Consumer<CategoryProvider>(builder: (_, provider, child) {
+          return SizedBox(
+            height: 11.h,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return CircleCatItem(
+                    showSimmer: provider.isLoadingCats,
+                    cat: provider.isLoadingCats ? null : provider.cats[index]);
+              },
+              itemCount: provider.isLoadingCats
+                  ? 10
+                  : (provider.cats.length > 10 ? 10 : provider.cats.length),
+            ),
+          );
+        })
       ],
     );
   }

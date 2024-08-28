@@ -15,7 +15,6 @@ class AppUser {
     required this.avatar,
   });
 
-  // Factory method to create a User instance from a JSON map
   factory AppUser.fromJson(Map<String, dynamic> json) {
     return AppUser(
       id: json['id'],
@@ -27,7 +26,6 @@ class AppUser {
     );
   }
 
-  // Method to convert a User instance into a JSON map
   Map<String, dynamic> toJson() {
     return {
       'id': id,

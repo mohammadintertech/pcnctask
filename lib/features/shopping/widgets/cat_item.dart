@@ -1,10 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pcnc_task/features/shopping/models/category.dart';
 import 'package:sizer/sizer.dart';
 
 class CatItem extends StatefulWidget {
-  const CatItem({super.key});
-
+  CatItem(this.cat);
+  AppCategory cat;
   @override
   State<CatItem> createState() => _CatItemState();
 }
@@ -20,11 +22,21 @@ class _CatItemState extends State<CatItem> {
           children: [
             Expanded(
                 child: Container(
-              // color: Colors.green,
-              child: Image.network(
-                'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg',
+              width: double.infinity,
+              child: CachedNetworkImage(
+                imageUrl: widget.cat.image,
                 fit: BoxFit.cover,
+                errorWidget: (context, url, error) => Icon(Icons.image),
               ),
+              // decoration: BoxDecoration(
+              //   image: DecorationImage(
+              //     onError: (exception, stackTrace) {},
+              //     image: NetworkImage(
+              //       widget.cat.image,
+              //     ),
+              //     fit: BoxFit.cover,
+              //   ),
+              // ),
             )),
             Expanded(
                 child: Container(
@@ -35,9 +47,9 @@ class _CatItemState extends State<CatItem> {
                     children: <Widget>[
                       Flexible(
                         child: Padding(
-                          padding: const EdgeInsets.all(5.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            'Women Printed Kurta',
+                            widget.cat.name,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 3,
                             style: TextStyle(

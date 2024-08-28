@@ -2,19 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pcnc_task/features/auth/controllers/user_provider.dart';
 import 'package:pcnc_task/features/auth/models/user.dart';
-import 'package:pcnc_task/features/shopping/widgets/cat_item.dart';
-import 'package:pcnc_task/features/shopping/widgets/cat_section.dart';
-import 'package:pcnc_task/features/shopping/widgets/circle_cat_item.dart';
-import 'package:pcnc_task/features/shopping/widgets/dashboard_products_grid.dart';
-import 'package:pcnc_task/features/shopping/widgets/search_field.dart';
-import 'package:pcnc_task/features/shopping/widgets/white_button.dart';
 import 'package:pcnc_task/global/constants/app_colors.dart';
-import 'package:pcnc_task/global/constants/text_styles.dart';
 import 'package:pcnc_task/global/widgets/app_bar.dart';
-import 'package:pcnc_task/global/widgets/drawer_icon.dart';
 import 'package:pcnc_task/global/widgets/my_drawer.dart';
 import 'package:provider/provider.dart';
-import 'package:sizer/sizer.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -51,20 +42,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
         body: FutureBuilder<bool>(
-          future: getProfile(), // Fetch data when FutureBuilder is created
+          future: getProfile(),
           builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              // While the data is being fetched
               return Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
-              // If an error occurs
               return Center(child: Text('Error: ${snapshot.error}'));
             } else if (snapshot.hasData) {
-              // If data is successfully fetched
               final data = snapshot.data!;
               return Selector<UserProvider, AppUser>(
-                  selector: (_, provider) =>
-                      provider.user, // will rebuild only when `bar` changes
+                  selector: (_, provider) => provider.user,
                   builder: (_, user, __) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -74,7 +61,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     );
                   });
             } else {
-              // If no data is available
               return Center(child: Text('No data available'));
             }
           },

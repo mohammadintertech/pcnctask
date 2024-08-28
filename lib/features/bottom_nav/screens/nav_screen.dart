@@ -19,9 +19,9 @@ class NavScreen extends StatefulWidget {
 class _NavScreenState extends State<NavScreen> {
   List<Widget> screens = [
     DashBoardScreen(),
-    DashBoardScreen(),
     SearchScreen(),
-    DashBoardScreen(),
+    SearchScreen(),
+    SearchScreen(),
   ];
 
   int currentIndex = 0;

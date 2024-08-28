@@ -31,7 +31,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 Provider.of<UserProvider>(context, listen: false).logout();
                 Navigator.pushNamedAndRemoveUntil(
                   context,
-                  '/',
+                  '/sign_in',
                   (Route<dynamic> route) => false,
                 );
               },
