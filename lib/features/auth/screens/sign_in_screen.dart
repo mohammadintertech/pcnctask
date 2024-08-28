@@ -26,11 +26,9 @@ class _SignInScreenState extends State<SignInScreen> {
       }
       isLoading = true;
 
-      bool result = await Provider.of<UserProvider>(context, listen: false)
-          .login(emailController.text.trim(), passController.text);
-      if (result) {
-        Navigator.pushReplacementNamed(context, '/nav_screen');
-      }
+      await Provider.of<UserProvider>(context, listen: false)
+          .login(emailController.text.trim(), passController.text, context);
+
       isLoading = false;
     }
   }

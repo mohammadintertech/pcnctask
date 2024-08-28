@@ -5,6 +5,10 @@ class EndPoints {
     return base_url + "/auth/login";
   }
 
+  static refreshToken() {
+    return base_url + "/auth/refresh-token";
+  }
+
   static profile() {
     return base_url + "/auth/profile";
   }

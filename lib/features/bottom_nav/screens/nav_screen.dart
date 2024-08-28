@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pcnc_task/features/auth/controllers/token_manager.dart';
+import 'package:pcnc_task/features/auth/controllers/user_provider.dart';
 import 'package:pcnc_task/features/bottom_nav/widgets/bar_item.dart';
 import 'package:pcnc_task/features/shopping/screens/dashboard_screen.dart';
 import 'package:pcnc_task/features/shopping/screens/search_screen.dart';
 import 'package:pcnc_task/global/constants/text_styles.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 class NavScreen extends StatefulWidget {
@@ -22,6 +25,7 @@ class _NavScreenState extends State<NavScreen> {
   ];
 
   int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

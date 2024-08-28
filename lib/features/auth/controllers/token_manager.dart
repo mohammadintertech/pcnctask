@@ -19,7 +19,7 @@ class TokenManager {
 
   // Get access token
   Future<String?> getAccessToken() async {
-    return await _storage.read(key: _accessTokenKey) ?? "";
+    return await _storage.read(key: _accessTokenKey);
   }
 
   // Get refresh token
@@ -33,28 +33,9 @@ class TokenManager {
     await _storage.delete(key: _refreshTokenKey);
   }
 
-  Future<void> refreshAccessToken() async {
-    String? refreshToken = await getRefreshToken();
-    // final response = await http.post(
-    //   Uri.parse('$baseUrl/token/refresh'),
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: json.encode({'refresh_token': refreshToken}),
-    // );
-    // if (response.statusCode == 200) {
-    //   final newAccessToken = json.decode(response.body)['access_token'];
-    //   await tokenManager.saveAccessToken(newAccessToken);
-    // } else {
-    //   // Handle token refresh failure
-    // }
-  }
+  Future<bool> isTokenSaved() async {
+    final token = await TokenManager().getAccessToken();
 
-  Future<bool> isUserLoggedIn() async {
-    final token = await _storage.read(key: 'access_token');
-
-    isLoggedIn = token != null;
-    print(isLoggedIn);
-    return isLoggedIn;
+    return token != "";
   }
 }

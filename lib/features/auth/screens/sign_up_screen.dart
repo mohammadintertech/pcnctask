@@ -23,22 +23,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
 
   bool isLoading = false;
-  login() async {
+  signUp() async {
     if (_formKey.currentState!.validate()) {
       if (isLoading) {
         return;
       }
       isLoading = true;
 
-      bool result =
-          await Provider.of<UserProvider>(context, listen: false).signUp(
-        emailController.text.trim(),
-        passController.text,
-        usernameController.text,
-      );
-      if (result) {
-        Navigator.pop(context);
-      }
+      await Provider.of<UserProvider>(context, listen: false).signUp(
+          emailController.text.trim(),
+          passController.text,
+          usernameController.text,
+          context);
+
       isLoading = false;
     }
   }
@@ -142,7 +139,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 padding: const EdgeInsets.only(top: 30.0, bottom: 30),
                 child: PrimaryButton(
                     onTap: () async {
-                      await login();
+                      await signUp();
                     },
                     text: "Create Account"),
               ),
