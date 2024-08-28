@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -21,9 +22,11 @@ class _ProductItemState extends State<ProductItem> {
             Expanded(
                 child: Container(
               // color: Colors.green,
-              child: Image.network(
-                'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg',
+              child: CachedNetworkImage(
+                imageUrl:
+                    'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg',
                 fit: BoxFit.cover,
+                errorWidget: (context, url, error) => Icon(Icons.image),
               ),
             )),
             Expanded(
