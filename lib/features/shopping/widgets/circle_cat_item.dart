@@ -33,26 +33,36 @@ class CircleCatItem extends StatelessWidget {
                   ),
                 ],
               )
-            : Column(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(50),
-                    child: Container(
-                      height: 8.h,
-                      width: 8.h,
-                      child: CachedNetworkImage(
-                        imageUrl: cat!.image,
-                        fit: BoxFit.cover,
-                        errorWidget: (context, url, error) => Icon(Icons.image),
+            : GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/products_by_cat',
+                    arguments: cat,
+                  );
+                },
+                child: Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(50),
+                      child: Container(
+                        height: 8.h,
+                        width: 8.h,
+                        child: CachedNetworkImage(
+                          imageUrl: cat!.image,
+                          fit: BoxFit.cover,
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.image),
+                        ),
                       ),
                     ),
-                  ),
-                  Text(
-                    cat!.name,
-                    overflow: TextOverflow.ellipsis,
-                    // style: TextStyle(fontSize: ),
-                  )
-                ],
+                    Text(
+                      cat!.name,
+                      overflow: TextOverflow.ellipsis,
+                      // style: TextStyle(fontSize: ),
+                    )
+                  ],
+                ),
               ),
       ),
     );

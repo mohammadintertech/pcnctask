@@ -10,6 +10,7 @@ import 'package:pcnc_task/features/shopping/controllers/categories_provider.dart
 import 'package:pcnc_task/features/shopping/controllers/products_provider.dart';
 import 'package:pcnc_task/features/shopping/screens/categories_screen.dart';
 import 'package:pcnc_task/features/shopping/screens/dashboard_screen.dart';
+import 'package:pcnc_task/features/shopping/screens/products_by_cat_screen.dart';
 import 'package:pcnc_task/features/shopping/screens/search_screen.dart';
 import 'package:pcnc_task/global/constants/app_colors.dart';
 import 'package:pcnc_task/services/requester.dart';
@@ -63,6 +64,7 @@ class _MyAppState extends State<MyApp> {
                 '/nav_screen': (context) => NavScreen(),
                 '/dashboard': (context) => DashBoardScreen(),
                 '/cat': (context) => CatScreen(),
+                '/products_by_cat': (context) => ProductsByCatScreen(),
                 '/search': (context) => SearchScreen(),
               },
               title: 'Flutter Demo',

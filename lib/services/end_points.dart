@@ -27,6 +27,10 @@ class EndPoints {
     return base_url + "/products";
   }
 
+  static products_by_cat(id) {
+    return base_url + "/products/?categoryId=$id";
+  }
+
   static random_products() {
     Random random = Random();
     return base_url + "/products?offset=${random.nextInt(20)}&limit=4";

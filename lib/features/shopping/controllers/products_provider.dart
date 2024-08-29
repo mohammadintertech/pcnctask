@@ -28,6 +28,12 @@ class ProductsProvider with ChangeNotifier {
     return _trend_products ?? [];
   }
 
+  List<Product> _products_by_cat = [];
+
+  get products_by_cat {
+    return _products_by_cat ?? [];
+  }
+
   bool isLoadingAllProducts = false;
   Future<void> getAllProducts() async {
     try {
@@ -41,7 +47,6 @@ class ProductsProvider with ChangeNotifier {
       notifyListeners();
       if (response.statusCode == 201 || response.statusCode == 200) {
         final data = response.data;
-        print('data : ${data[0]}');
         _all_products = data.map<Product>((e) => Product.fromJson(e)).toList();
       } else {
         AppToast.showToast('failed ${response.data}');
@@ -69,7 +74,6 @@ class ProductsProvider with ChangeNotifier {
       notifyListeners();
       if (response.statusCode == 201 || response.statusCode == 200) {
         final data = response.data;
-        print('data : ${data[0]}');
         _random_products =
             data.map<Product>((e) => Product.fromJson(e)).toList();
       } else {
@@ -98,7 +102,6 @@ class ProductsProvider with ChangeNotifier {
       notifyListeners();
       if (response.statusCode == 201 || response.statusCode == 200) {
         final data = response.data;
-        print('data : ${data[0]}');
         _trend_products =
             data.map<Product>((e) => Product.fromJson(e)).toList();
       } else {
@@ -109,6 +112,27 @@ class ProductsProvider with ChangeNotifier {
     } catch (e) {
       print('error: $e');
       isLoadingTrendProducts = false;
+      AppToast.showToast('$e');
+      return;
+    }
+  }
+
+  Future<void> getProductsByCat(id) async {
+    try {
+      final response = await Requester.getRequest(
+        EndPoints.products_by_cat(id), // no api for trend
+      );
+      notifyListeners();
+      if (response.statusCode == 201 || response.statusCode == 200) {
+        final data = response.data;
+        _products_by_cat =
+            data.map<Product>((e) => Product.fromJson(e)).toList();
+      } else {
+        AppToast.showToast('failed ${response.data}');
+      }
+      notifyListeners();
+    } catch (e) {
+      print('error: $e');
       AppToast.showToast('$e');
       return;
     }
