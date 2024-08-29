@@ -53,7 +53,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   mainAxisExtent: 30.h,
                 ),
                 itemBuilder: (context, index) {
-                  return ProductItem();
+                  // return ProductItem();
                 },
               ),
             ),

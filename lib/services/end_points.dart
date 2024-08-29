@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class EndPoints {
   static String base_url = "https://api.escuelajs.co/api/v1";
 
@@ -19,5 +21,14 @@ class EndPoints {
 
   static categories() {
     return base_url + "/categories";
+  }
+
+  static all_products() {
+    return base_url + "/products";
+  }
+
+  static random_products() {
+    Random random = Random();
+    return base_url + "/products?offset=${random.nextInt(20)}&limit=4";
   }
 }

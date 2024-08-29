@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pcnc_task/features/shopping/models/category.dart';
+import 'package:pcnc_task/global/widgets/app_image.dart';
 import 'package:sizer/sizer.dart';
 
 class CatItem extends StatefulWidget {
@@ -22,22 +23,20 @@ class _CatItemState extends State<CatItem> {
           children: [
             Expanded(
                 child: Container(
-              width: double.infinity,
-              child: CachedNetworkImage(
-                imageUrl: widget.cat.image,
-                fit: BoxFit.cover,
-                errorWidget: (context, url, error) => Icon(Icons.image),
-              ),
-              // decoration: BoxDecoration(
-              //   image: DecorationImage(
-              //     onError: (exception, stackTrace) {},
-              //     image: NetworkImage(
-              //       widget.cat.image,
-              //     ),
-              //     fit: BoxFit.cover,
-              //   ),
-              // ),
-            )),
+                    width: double.infinity,
+                    child: AppImage(
+                      widget.cat.image,
+                    )
+                    // decoration: BoxDecoration(
+                    //   image: DecorationImage(
+                    //     onError: (exception, stackTrace) {},
+                    //     image: NetworkImage(
+                    //       widget.cat.image,
+                    //     ),
+                    //     fit: BoxFit.cover,
+                    //   ),
+                    // ),
+                    )),
             Expanded(
                 child: Container(
               // color: Colors.blue,

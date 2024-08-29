@@ -4,6 +4,7 @@ import 'package:pcnc_task/features/shopping/widgets/cat_section.dart';
 import 'package:pcnc_task/features/shopping/widgets/circle_cat_item.dart';
 import 'package:pcnc_task/features/shopping/widgets/dashboard_products_grid.dart';
 import 'package:pcnc_task/features/shopping/widgets/search_field.dart';
+import 'package:pcnc_task/features/shopping/widgets/trending_producst.dart';
 import 'package:pcnc_task/features/shopping/widgets/white_button.dart';
 import 'package:pcnc_task/global/constants/app_colors.dart';
 import 'package:pcnc_task/global/constants/text_styles.dart';
@@ -45,6 +46,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               height: 2.h,
             ),
             DashboardGrid(),
+            TrendingProducts(),
             SizedBox(
               height: 10.h,
             )

@@ -7,6 +7,7 @@ import 'package:pcnc_task/features/auth/screens/sign_in_screen.dart';
 import 'package:pcnc_task/features/auth/screens/sign_up_screen.dart';
 import 'package:pcnc_task/features/bottom_nav/screens/nav_screen.dart';
 import 'package:pcnc_task/features/shopping/controllers/categories_provider.dart';
+import 'package:pcnc_task/features/shopping/controllers/products_provider.dart';
 import 'package:pcnc_task/features/shopping/screens/categories_screen.dart';
 import 'package:pcnc_task/features/shopping/screens/dashboard_screen.dart';
 import 'package:pcnc_task/features/shopping/screens/search_screen.dart';
@@ -50,6 +51,7 @@ class _MyAppState extends State<MyApp> {
             providers: [
               ChangeNotifierProvider(create: (_) => UserProvider()),
               ChangeNotifierProvider(create: (_) => CategoryProvider()),
+              ChangeNotifierProvider(create: (_) => ProductsProvider()),
             ],
             child: MaterialApp(
               debugShowCheckedModeBanner: false,

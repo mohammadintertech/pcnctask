@@ -44,9 +44,9 @@ class _CatScreenState extends State<CatScreen> {
           SearchField(),
           Expanded(
             child: Padding(
-                padding: const EdgeInsets.only(right: 15, left: 15),
-                child:
-                    Consumer<CategoryProvider>(builder: (_, provider, child) {
+              padding: const EdgeInsets.only(right: 15, left: 15),
+              child: Consumer<CategoryProvider>(
+                builder: (_, provider, child) {
                   return GridView.builder(
                     itemCount: provider.cats.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -59,7 +59,9 @@ class _CatScreenState extends State<CatScreen> {
                       return CatItem(provider.cats[index]);
                     },
                   );
-                })),
+                },
+              ),
+            ),
           ),
         ],
       ),

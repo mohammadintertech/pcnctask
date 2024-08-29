@@ -1,11 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pcnc_task/features/shopping/models/products.dart';
+import 'package:pcnc_task/global/widgets/app_image.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
 class ProductItem extends StatefulWidget {
-  const ProductItem({super.key});
+  ProductItem({required this.product});
 
+  Product product;
   @override
   State<ProductItem> createState() => _ProductItemState();
 }
@@ -16,18 +20,15 @@ class _ProductItemState extends State<ProductItem> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(15),
       child: Container(
+        width: 45.w,
         color: Colors.white,
         child: Column(
           children: [
             Expanded(
                 child: Container(
               // color: Colors.green,
-              child: CachedNetworkImage(
-                imageUrl:
-                    'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg',
-                fit: BoxFit.cover,
-                errorWidget: (context, url, error) => Icon(Icons.image),
-              ),
+              width: double.infinity,
+              child: AppImage(widget.product.images[0]),
             )),
             Expanded(
                 child: Container(
@@ -40,7 +41,7 @@ class _ProductItemState extends State<ProductItem> {
                         child: Padding(
                           padding: const EdgeInsets.all(5.0),
                           child: Text(
-                            'Women Printed Kurta',
+                            widget.product.title,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -54,7 +55,7 @@ class _ProductItemState extends State<ProductItem> {
                   Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: Text(
-                      'Neque porro quisquam est qui dolorem ipsum quia',
+                      widget.product.description,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                       style: TextStyle(
@@ -67,7 +68,7 @@ class _ProductItemState extends State<ProductItem> {
                       Padding(
                         padding: const EdgeInsets.only(left: 5.0),
                         child: Text(
-                          '\$1500',
+                          '\$${widget.product.price}',
                           style: TextStyle(
                               fontSize: 10.sp, fontWeight: FontWeight.bold),
                         ),
@@ -104,6 +105,26 @@ class _ProductItemState extends State<ProductItem> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class ProductItemShimmer extends StatefulWidget {
+  @override
+  State<ProductItemShimmer> createState() => _ProductItemShimmerState();
+}
+
+class _ProductItemShimmerState extends State<ProductItemShimmer> {
+  @override
+  Widget build(BuildContext context) {
+    return Shimmer.fromColors(
+      baseColor: const Color.fromARGB(255, 231, 231, 231),
+      highlightColor: const Color.fromARGB(255, 255, 255, 255),
+      child: ClipRRect(
+          borderRadius: BorderRadius.circular(15),
+          child: Container(
+            color: Colors.white,
+          )),
     );
   }
 }

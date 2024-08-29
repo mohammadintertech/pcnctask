@@ -20,6 +20,8 @@ dependencies:
   fluttertoast: ^8.2.8
   shimmer: ^3.0.0
   cached_network_image: ^3.4.1
+  widget_zoom: ^0.0.4
+  fullscreen_image_viewer: ^0.0.5
 
 dev_dependencies:
   flutter_test:
